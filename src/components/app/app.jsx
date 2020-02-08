@@ -1,17 +1,28 @@
 import React from 'react';
 import Main from '../main/main.jsx';
+import PropTypes from "prop-types";
 
 const App = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const {promoFilm} = props;
+  const {data} = props;
 
-  return <React.Fragment>
-    <Main promoFilm={promoFilm} />
-    <div className="page-content">
-      <section className="catalog">
-      </section>
-    </div>
-  </React.Fragment>;
+  return <Main data={data} />;
+};
+
+App.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({
+    genres: PropTypes.arrayOf(PropTypes.string),
+    films: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired
+    })),
+    promoFilm: PropTypes.exact({
+      title: PropTypes.string.isRequired,
+      meta: PropTypes.exact({
+        genre: PropTypes.string.isRequired,
+        releaseYear: PropTypes.number.isRequired
+      })
+    })
+  }))
 };
 
 export default App;
