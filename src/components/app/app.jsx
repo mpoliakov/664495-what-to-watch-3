@@ -9,7 +9,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({
+  data: PropTypes.shape({
     genres: PropTypes.arrayOf(PropTypes.string),
     films: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -22,7 +22,7 @@ App.propTypes = {
         releaseYear: PropTypes.number.isRequired
       })
     })
-  }))
+  })
 };
 
 export default App;

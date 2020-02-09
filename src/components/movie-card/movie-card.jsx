@@ -2,20 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MovieCard = (props) => {
-  const {
-    // eslint-disable-next-line react/prop-types
-    film: {
-      // eslint-disable-next-line react/prop-types
-      title,
-      // eslint-disable-next-line react/prop-types
-      meta: {
-        // eslint-disable-next-line react/prop-types
-        genre,
-        // eslint-disable-next-line react/prop-types
-        releaseYear
-      }
-    }
-  } = props;
+  const {film} = props;
 
   return <section className="movie-card">
     <div className="movie-card__bg">
@@ -42,10 +29,10 @@ const MovieCard = (props) => {
           <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
         </div>
         <div className="movie-card__desc">
-          <h2 className="movie-card__title">{title}</h2>
+          <h2 className="movie-card__title">{film.title}</h2>
           <p className="movie-card__meta">
-            <span className="movie-card__genre">{genre}</span>
-            <span className="movie-card__year">{releaseYear}</span>
+            <span className="movie-card__genre">{film.meta.genre}</span>
+            <span className="movie-card__year">{film.meta.releaseYear}</span>
           </p>
           <div className="movie-card__buttons">
             <button className="btn btn--play movie-card__button" type="button">
