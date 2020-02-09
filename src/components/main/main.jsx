@@ -42,7 +42,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({
+  data: PropTypes.shape({
     genres: PropTypes.arrayOf(PropTypes.string),
     films: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -55,7 +55,7 @@ Main.propTypes = {
         releaseYear: PropTypes.number.isRequired
       })
     })
-  }))
+  })
 };
 
 export default Main;
