@@ -6,7 +6,7 @@ exports[`MoviesList is rendered correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -31,7 +31,7 @@ exports[`MoviesList is rendered correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"

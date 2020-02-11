@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.jsx';
-import mock from './mock';
+import promoFilm from './mocks/promo-film';
+import genres from './mocks/genres';
+import films from './mocks/films';
 
-ReactDOM.render(<App data={mock} />, document.getElementById(`root`));
+ReactDOM.render(<App promoFilm={promoFilm} genres={genres} films={films} />, document.getElementById(`root`));
 

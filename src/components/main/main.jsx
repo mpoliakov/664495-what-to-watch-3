@@ -6,11 +6,9 @@ import PropTypes from "prop-types";
 
 const Main = (props) => {
   const {
-    data: {
-      genres,
-      films,
-      promoFilm
-    }
+    promoFilm,
+    genres,
+    films
   } = props;
 
   return <React.Fragment>
@@ -42,20 +40,18 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  data: PropTypes.shape({
-    genres: PropTypes.arrayOf(PropTypes.string),
-    films: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired
-    })),
-    promoFilm: PropTypes.exact({
-      title: PropTypes.string.isRequired,
-      meta: PropTypes.exact({
-        genre: PropTypes.string.isRequired,
-        releaseYear: PropTypes.number.isRequired
-      })
+  promoFilm: PropTypes.exact({
+    title: PropTypes.string.isRequired,
+    meta: PropTypes.exact({
+      genre: PropTypes.string.isRequired,
+      releaseYear: PropTypes.number.isRequired
     })
-  })
+  }),
+  genres: PropTypes.arrayOf(PropTypes.string),
+  films: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  }))
 };
 
 export default Main;
