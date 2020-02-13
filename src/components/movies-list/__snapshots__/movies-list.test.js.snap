@@ -14,7 +14,6 @@ exports[`MoviesList is rendered correctly 1`] = `
       <img
         alt="Alien"
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
@@ -39,7 +38,6 @@ exports[`MoviesList is rendered correctly 1`] = `
       <img
         alt="Home alone"
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>

@@ -11,7 +11,6 @@ exports[`SmallMovieCard is rendered correctly 1`] = `
     <img
       alt="Alien"
       height="175"
-      src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       width="280"
     />
   </div>

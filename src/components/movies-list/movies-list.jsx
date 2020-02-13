@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
+import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
 
 const MoviesList = (props) => {
   const {films} = props;
@@ -17,7 +17,8 @@ const MoviesList = (props) => {
 MoviesList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string
   }))
 };
 

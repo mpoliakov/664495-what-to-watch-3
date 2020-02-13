@@ -15,6 +15,8 @@ const App = (props) => {
 App.propTypes = {
   promoFilm: PropTypes.exact({
     title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    posterUrl: PropTypes.string,
     meta: PropTypes.exact({
       genre: PropTypes.string.isRequired,
       releaseYear: PropTypes.number.isRequired
@@ -23,7 +25,8 @@ App.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string),
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string
   }))
 };
 

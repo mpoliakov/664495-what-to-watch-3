@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Main from './main.jsx';
 
 it(`Main is rendered correctly`, () => {
   const genres = [`Dramas`, `Horror`, `Kids & Family`];

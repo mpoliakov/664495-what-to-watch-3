@@ -6,7 +6,7 @@ const MovieCard = (props) => {
 
   return <section className="movie-card">
     <div className="movie-card__bg">
-      <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+      <img src={film.imageUrl} alt="The Grand Budapest Hotel" />
     </div>
     <h1 className="visually-hidden">WTW</h1>
     <header className="page-header movie-card__head">
@@ -26,7 +26,7 @@ const MovieCard = (props) => {
     <div className="movie-card__wrap">
       <div className="movie-card__info">
         <div className="movie-card__poster">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={film.posterUrl} alt="The Grand Budapest Hotel poster" width="218" height="327" />
         </div>
         <div className="movie-card__desc">
           <h2 className="movie-card__title">{film.title}</h2>
@@ -57,6 +57,8 @@ const MovieCard = (props) => {
 MovieCard.propTypes = {
   film: PropTypes.exact({
     title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    posterUrl: PropTypes.string,
     meta: PropTypes.exact({
       genre: PropTypes.string.isRequired,
       releaseYear: PropTypes.number.isRequired
