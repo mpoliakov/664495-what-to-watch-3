@@ -10,7 +10,6 @@ Array [
     >
       <img
         alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
     <h1
@@ -71,7 +70,6 @@ Array [
           <img
             alt="The Grand Budapest Hotel poster"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
           />
         </div>
@@ -199,7 +197,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -207,7 +205,6 @@ Array [
             <img
               alt="Raining Man"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -224,7 +221,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -232,7 +229,6 @@ Array [
             <img
               alt="Predator"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -249,7 +245,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
+          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -257,7 +253,6 @@ Array [
             <img
               alt="Harry Potter"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>

@@ -1,28 +1,33 @@
 import React from 'react';
 import Main from '../main/main.jsx';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const App = (props) => {
-  const {data} = props;
+  const {
+    promoFilm,
+    genres,
+    films
+  } = props;
 
-  return <Main data={data} />;
+  return <Main promoFilm={promoFilm} genres={genres} films={films} />;
 };
 
 App.propTypes = {
-  data: PropTypes.shape({
-    genres: PropTypes.arrayOf(PropTypes.string),
-    films: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired
-    })),
-    promoFilm: PropTypes.exact({
-      title: PropTypes.string.isRequired,
-      meta: PropTypes.exact({
-        genre: PropTypes.string.isRequired,
-        releaseYear: PropTypes.number.isRequired
-      })
+  promoFilm: PropTypes.exact({
+    title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    posterUrl: PropTypes.string,
+    meta: PropTypes.exact({
+      genre: PropTypes.string.isRequired,
+      releaseYear: PropTypes.number.isRequired
     })
-  })
+  }),
+  genres: PropTypes.arrayOf(PropTypes.string),
+  films: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string
+  }))
 };
 
 export default App;

@@ -6,7 +6,7 @@ exports[`MoviesList is rendered correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -14,7 +14,6 @@ exports[`MoviesList is rendered correctly 1`] = `
       <img
         alt="Alien"
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
@@ -31,7 +30,7 @@ exports[`MoviesList is rendered correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -39,7 +38,6 @@ exports[`MoviesList is rendered correctly 1`] = `
       <img
         alt="Home alone"
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
