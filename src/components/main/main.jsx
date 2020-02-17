@@ -1,46 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card.jsx';
+import PageContent from '../page-content/page-content.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
-import PropTypes from 'prop-types';
 
 const Main = (props) => {
   const {
     promoFilm,
     genres,
-    films
+    films,
+    onMovieCardClick
   } = props;
 
   return <React.Fragment>
     <MovieCard film={promoFilm}/>
-    <div className="page-content">
+    <PageContent>
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         <GenresList genres={genres} />
-        <MoviesList films={films} />
+        <MoviesList films={films} onMovieCardClick={onMovieCardClick}/>
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
         </div>
       </section>
-      <footer className="page-footer">
-        <div className="logo">
-          <a className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
-
-        <div className="copyright">
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
-    </div>
+    </PageContent>
   </React.Fragment>;
 };
 
 Main.propTypes = {
-  promoFilm: PropTypes.exact({
+  promoFilm: PropTypes.shape({
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
     posterUrl: PropTypes.string,
@@ -54,7 +43,8 @@ Main.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string
-  }))
+  })),
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export default Main;

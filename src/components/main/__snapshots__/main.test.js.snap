@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main is rendered correctly 1`] = `
+exports[`<Main/> is rendered correctly 1`] = `
 Array [
   <section
     className="movie-card"
@@ -10,6 +10,7 @@ Array [
     >
       <img
         alt="The Grand Budapest Hotel"
+        src="img/interstellar.jpg"
       />
     </div>
     <h1
@@ -70,6 +71,7 @@ Array [
           <img
             alt="The Grand Budapest Hotel poster"
             height="327"
+            src="img/interstellar-poster.jpg"
             width="218"
           />
         </div>
@@ -92,7 +94,7 @@ Array [
             <span
               className="movie-card__year"
             >
-              2015
+              2014
             </span>
           </p>
           <div
@@ -197,7 +199,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
+          onClick={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -221,7 +223,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
+          onClick={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -245,7 +247,7 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
+          onClick={[Function]}
         >
           <div
             className="small-movie-card__image"
