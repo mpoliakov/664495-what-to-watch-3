@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MoviesList from './movies-list.jsx';
 
-it(`MoviesList is rendered correctly`, () => {
+it(`<MoviesList/> is rendered correctly`, () => {
   const films = [{
     id: `2fc32fa3-e5d4-4e7d-8f58-397cc8c9bba7`,
     title: `Alien`
@@ -12,7 +12,8 @@ it(`MoviesList is rendered correctly`, () => {
     title: `Home alone`
   }];
 
-  const component = renderer.create(<MoviesList films={films} />).toJSON();
+  const onMovieCardClick = jest.fn();
 
+  const component = renderer.create(<MoviesList films={films} onMovieCardClick={onMovieCardClick}/>).toJSON();
   expect(component).toMatchSnapshot();
 });

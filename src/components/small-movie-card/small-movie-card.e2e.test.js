@@ -7,15 +7,16 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
-it(`SmallMovieCard should have onMouseOver handler`, () => {
-  const onMovieCardHover = jest.fn();
-
+it(`<SmallMovieCard/> should have onClick() handler`, () => {
   const film = {
+    id: `018a1a1e-8755-4c4f-87fd-08df55da6771`,
     title: `Alien`
   };
 
-  const component = shallow(<SmallMovieCard film={film} onMovieCardHover={onMovieCardHover} />);
-  component.find(`.small-movie-card`).simulate(`mouseOver`);
+  const onMovieCardClick = jest.fn();
 
-  expect(onMovieCardHover.mock.calls.length).toBe(1);
+  const component = shallow(<SmallMovieCard film={film} onMovieCardClick={onMovieCardClick} />);
+  component.find(`.small-movie-card`).props().onClick();
+
+  expect(onMovieCardClick.mock.calls.length).toBe(1);
 });

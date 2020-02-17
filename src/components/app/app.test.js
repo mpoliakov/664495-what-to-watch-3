@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import App from './app.jsx';
 
-it(`App is rendered correctly`, () => {
+it(`<App/> is rendered correctly`, () => {
   const genres = [`Dramas`, `Horror`, `Kids & Family`];
 
   const films = [
@@ -13,13 +13,21 @@ it(`App is rendered correctly`, () => {
 
   const promoFilm = {
     title: `Interstellar`,
+    imageUrl: `img/interstellar.jpg`,
+    posterUrl: `img/interstellar-poster.jpg`,
+    director: `Christopher Nolan`,
+    starring: [`Matthew McConaughey`, `Anne Hathaway`, `Jessica Chastain`],
+    description: `<p>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>`,
     meta: {
       genre: `Sci-Fi`,
-      releaseYear: 2015
+      releaseYear: 2014
+    },
+    rating: {
+      score: 9.5,
+      count: 345
     }
   };
 
   const component = renderer.create(<App promoFilm={promoFilm} genres={genres} films={films} />).toJSON();
-
   expect(component).toMatchSnapshot();
 });
