@@ -79,7 +79,8 @@ App.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string
+    imageUrl: PropTypes.string,
+    videoUrl: PropTypes.string
   }))
 };
 

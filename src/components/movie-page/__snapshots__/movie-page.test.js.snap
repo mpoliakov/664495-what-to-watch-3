@@ -264,15 +264,15 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Raining Man"
-              height="175"
-              width="280"
-            />
+            <video>
+              <source />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -288,15 +288,15 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Predator"
-              height="175"
-              width="280"
-            />
+            <video>
+              <source />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -312,15 +312,15 @@ Array [
         <article
           className="small-movie-card catalog__movies-card"
           onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Harry Potter"
-              height="175"
-              width="280"
-            />
+            <video>
+              <source />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"

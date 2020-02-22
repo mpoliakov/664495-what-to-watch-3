@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageFooter from '../page-footer/page-footer.jsx';
 
-const PageContent = (props) => {
-  return <div className="page-content">
-    {props.children}
+const PageContent = ({children}) => (
+  <div className="page-content">
+    {children}
     <PageFooter/>
-  </div>;
-};
+  </div>
+);
 
 PageContent.propTypes = {
   children: PropTypes.oneOfType([
