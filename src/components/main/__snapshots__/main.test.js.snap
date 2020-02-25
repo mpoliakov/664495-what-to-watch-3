@@ -206,9 +206,9 @@ Array [
           <div
             className="small-movie-card__image"
           >
-            <video>
-              <source />
-            </video>
+            <video
+              onLoadStart={[Function]}
+            />
           </div>
           <h3
             className="small-movie-card__title"
@@ -230,9 +230,9 @@ Array [
           <div
             className="small-movie-card__image"
           >
-            <video>
-              <source />
-            </video>
+            <video
+              onLoadStart={[Function]}
+            />
           </div>
           <h3
             className="small-movie-card__title"
@@ -254,9 +254,9 @@ Array [
           <div
             className="small-movie-card__image"
           >
-            <video>
-              <source />
-            </video>
+            <video
+              onLoadStart={[Function]}
+            />
           </div>
           <h3
             className="small-movie-card__title"

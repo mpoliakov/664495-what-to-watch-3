@@ -6,7 +6,13 @@ class VideoPlayer extends PureComponent {
     super(props);
 
     this._videoRef = createRef();
-    this._sourceRef = createRef();
+
+    this.state = {
+      isPlaying: props.isPlaying
+    };
+
+    this._handleLoadStart = this._handleLoadStart.bind(this);
+    this._handlePlay = this._handlePlay.bind(this);
   }
 
   componentDidMount() {
@@ -23,31 +29,38 @@ class VideoPlayer extends PureComponent {
     video.width = width;
     video.height = height;
 
-    const source = this._sourceRef.current;
     if (film.videoUrl) {
-      source.src = film.videoUrl;
-      const type = film.videoUrl.split(`.`)[film.videoUrl.split(`.`).length - 1];
-      source.type = `video/${type}`;
+      video.src = film.videoUrl;
     }
   }
 
-  render() {
+  componentDidUpdate() {
     const {isPlaying} = this.props;
-
     const video = this._videoRef.current;
 
     if (video) {
       if (isPlaying) {
         video.play();
       } else {
-        video.pause();
         video.load(); // reset and show poster
       }
     }
+  }
 
-    return <video ref={this._videoRef}>
-      <source ref={this._sourceRef}/>
-    </video>;
+  _handleLoadStart() {
+    this.setState({
+      isPlaying: false
+    });
+  }
+
+  _handlePlay() {
+    this.setState({
+      isPlaying: true
+    });
+  }
+
+  render() {
+    return <video ref={this._videoRef} onLoadStart={this._handleLoadStart} onPlay={this._handleOnPlay}/>;
   }
 }
 

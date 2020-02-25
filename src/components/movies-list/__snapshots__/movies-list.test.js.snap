@@ -13,9 +13,9 @@ exports[`<MoviesList/> is rendered correctly 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <video>
-        <source />
-      </video>
+      <video
+        onLoadStart={[Function]}
+      />
     </div>
     <h3
       className="small-movie-card__title"
@@ -37,9 +37,9 @@ exports[`<MoviesList/> is rendered correctly 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <video>
-        <source />
-      </video>
+      <video
+        onLoadStart={[Function]}
+      />
     </div>
     <h3
       className="small-movie-card__title"
