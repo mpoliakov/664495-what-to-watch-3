@@ -1,28 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SmallMovieCard = (props) => {
-  const {
-    film,
-    onMovieCardClick
-  } = props;
+class SmallMovieCard extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return <article className="small-movie-card catalog__movies-card" onClick={() => onMovieCardClick(film)}>
-    <div className="small-movie-card__image">
-      <img src={film.imageUrl} alt={film.title} width="280" height="175"/>
-    </div>
-    <h3 className="small-movie-card__title">
-      <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
-    </h3>
-  </article>;
-};
+  render() {
+    const {
+      film,
+      renderVideoPlayer,
+      onMovieCardClick,
+      onMouseEnter,
+      onMouseLeave
+    } = this.props;
+
+    return <article className="small-movie-card catalog__movies-card" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={() => onMovieCardClick(film)}>
+      <div className="small-movie-card__image">
+        {renderVideoPlayer(film)}
+      </div>
+      <h3 className="small-movie-card__title">
+        <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
+      </h3>
+    </article>;
+  }
+}
 
 SmallMovieCard.propTypes = {
   film: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string
+    imageUrl: PropTypes.string,
+    videoUl: PropTypes.string
   }),
-  onMovieCardClick: PropTypes.func.isRequired
+  renderVideoPlayer: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  onMovieCardClick: PropTypes.func
 };
 
 export default SmallMovieCard;

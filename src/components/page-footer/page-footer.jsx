@@ -1,7 +1,7 @@
 import React from 'react';
 
-const PageFooter = () => {
-  return <footer className="page-footer">
+const PageFooter = () => (
+  <footer className="page-footer">
     <div className="logo">
       <a className="logo__link logo__link--light">
         <span className="logo__letter logo__letter--1">W</span>
@@ -12,7 +12,7 @@ const PageFooter = () => {
     <div className="copyright">
       <p>© 2019 What to watch Ltd.</p>
     </div>
-  </footer>;
-};
+  </footer>
+);
 
 export default PageFooter;

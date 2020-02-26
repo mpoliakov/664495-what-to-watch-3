@@ -21,13 +21,34 @@ it(`<MoviePage/> is rendered correctly`, () => {
   };
 
   const filmsLikeThat = [
-    {id: `7c8b88b2-091b-4cd1-9589-3c88b77a9104`, title: `Raining Man`},
-    {id: `018a1a1e-8755-4c4f-87fd-08df55da6771`, title: `Predator`},
-    {id: `2fc32fa3-e5d4-4e7d-8f58-397cc8c9bba7`, title: `Harry Potter`}
+    {
+      id: `7c8b88b2-091b-4cd1-9589-3c88b77a9104`,
+      title: `Raining Man`,
+      imageUrl: `img/raining-man.jpg`,
+      videoUrl: `https://movies.com/raining-man.ogv.360p.webm`
+    },
+    {
+      id: `018a1a1e-8755-4c4f-87fd-08df55da6771`,
+      title: `Predator`,
+      imageUrl: `img/predator.jpg`,
+      videoUrl: `https://movies.com/predator.ogv.360p.webm`
+    },
+    {
+      id: `2fc32fa3-e5d4-4e7d-8f58-397cc8c9bba7`,
+      title: `Harry Potter`,
+      imageUrl: `img/harry-potter.jpg`,
+      videoUrl: `https://movies.com/harry-potter.ogv.360p.webm`
+    }
   ];
 
   const onMovieCardClick = jest.fn();
 
-  const component = renderer.create(<MoviePage film={film} filmsLikeThat={filmsLikeThat} onMovieCardClick={onMovieCardClick}/>).toJSON();
+  const options = {
+    createNodeMock: () => {
+      return {};
+    }
+  };
+
+  const component = renderer.create(<MoviePage film={film} filmsLikeThat={filmsLikeThat} onMovieCardClick={onMovieCardClick}/>, options).toJSON();
   expect(component).toMatchSnapshot();
 });
