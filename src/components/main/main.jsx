@@ -30,12 +30,21 @@ const Main = (props) => {
 
 Main.propTypes = {
   promoFilm: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
     posterUrl: PropTypes.string,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    description: PropTypes.string,
+    runTime: PropTypes.string,
     meta: PropTypes.exact({
       genre: PropTypes.string.isRequired,
       releaseYear: PropTypes.number.isRequired
+    }),
+    rating: PropTypes.exact({
+      score: PropTypes.number,
+      count: PropTypes.number
     })
   }),
   genres: PropTypes.arrayOf(PropTypes.string),

@@ -13,3 +13,9 @@ export const convertScoreToGrade = (score) => {
 
   return ``;
 };
+
+export const MovieCardTabs = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`
+};
