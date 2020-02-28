@@ -7,9 +7,13 @@ const MovieCardWithPlayer = withVideoPlayer(SmallMovieCard);
 
 const MoviesList = (props) => {
   const {
-    films,
+    films = [],
     onMovieCardClick
   } = props;
+
+  if (!films.length) {
+    return null;
+  }
 
   return <div className="catalog__movies-list">
     {films.map((film) => <MovieCardWithPlayer key={film.id} film={film} onMovieCardClick={onMovieCardClick}/>)}

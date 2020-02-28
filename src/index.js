@@ -1,9 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import {reducer} from './reducer';
 import App from './components/app/app.jsx';
-import promoFilm from './mocks/promo-film';
-import genres from './mocks/genres';
-import films from './mocks/films';
 
-ReactDOM.render(<App promoFilm={promoFilm} genres={genres} films={films} />, document.getElementById(`root`));
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
 
+ReactDOM.render(
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+    document.getElementById(`root`)
+);

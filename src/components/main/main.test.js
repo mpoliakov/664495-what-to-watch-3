@@ -1,58 +1,72 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 import Main from './main.jsx';
 
-it(`<Main/> is rendered correctly`, () => {
-  const genres = [`Dramas`, `Horror`, `Kids & Family`];
+const mockStore = configureStore([]);
 
-  const films = [
-    {
-      id: `7c8b88b2-091b-4cd1-9589-3c88b77a9104`,
-      title: `Raining Man`,
-      imageUrl: `img/raining-man.jpg`,
-      videoUrl: `https://movies.com/raining-man.ogv.360p.webm`,
-      meta: {
-        genre: `Drama`
-      }
-    },
-    {
-      id: `018a1a1e-8755-4c4f-87fd-08df55da6771`,
-      title: `Predator`,
-      imageUrl: `img/predator.jpg`,
-      videoUrl: `https://movies.com/predator.ogv.360p.webm`,
-      meta: {
-        genre: `Sci-Fi`
-      }
-    },
-    {
-      id: `2fc32fa3-e5d4-4e7d-8f58-397cc8c9bba7`,
-      title: `Harry Potter`,
-      imageUrl: `img/harry-potter.jpg`,
-      videoUrl: `https://movies.com/harry-potter.ogv.360p.webm`,
-      meta: {
-        genre: `Fantasy`
-      }
-    }
-  ];
-
-  const promoFilm = {
+const films = [
+  {
     id: `b47f3158-76c2-4f9b-b511-35419259ce63`,
-    title: `Interstellar`,
-    imageUrl: `img/interstellar.jpg`,
-    posterUrl: `img/interstellar-poster.jpg`,
-    director: `Christopher Nolan`,
-    starring: [`Matthew McConaughey`, `Anne Hathaway`, `Jessica Chastain`],
-    description: `<p>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>`,
-    runTime: `2h 15m`,
+    title: `The Grand Budapest Hotel`,
+    imageUrl: `img/bg-the-grand-budapest-hotel.jpg`,
+    posterUrl: `img/the-grand-budapest-hotel-poster.jpg`,
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    director: `Wes Andreson`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`],
+    description: `<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+              Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.</p>
+            <p>Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the
+              sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously,
+              Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>`,
+    runTime: `1h 39m`,
     meta: {
-      genre: `Sci-Fi`,
-      releaseYear: 2014
+      genre: `Drama`,
+      releaseYear: 2015,
     },
     rating: {
-      score: 9.5,
-      count: 345
-    }
-  };
+      score: 8.5,
+      count: 120,
+    },
+  },
+  {
+    id: `fe2f95b4-22ba-4b5d-b3f5-7fb50bb230bb`,
+    title: `Fantastic Beasts: The Crimes of Grindelwald`,
+    imageUrl: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    meta: {
+      genre: `Fantasy`,
+    },
+  },
+  {
+    id: `0bcb460d-4fa6-466d-8c60-42dd66ec5863`,
+    title: `Bohemian Rhapsody`,
+    imageUrl: `img/bohemian-rhapsody.jpg`,
+    videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    meta: {
+      genre: `Drama`,
+    },
+  },
+  {
+    id: `28973f3e-e22d-43a3-8acc-ae8465becf49`,
+    title: `Macbeth`,
+    imageUrl: `img/macbeth.jpg`,
+    videoUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    meta: {
+      genre: `Drama`,
+    },
+  }
+];
+
+it(`<Main/> is rendered correctly`, () => {
+  const store = mockStore({
+    films,
+    reviews: [],
+    promoFilmId: `b47f3158-76c2-4f9b-b511-35419259ce63`,
+    filmId: ``,
+    genreFilter: ``
+  });
 
   const onMovieCardClick = jest.fn();
 
@@ -62,6 +76,11 @@ it(`<Main/> is rendered correctly`, () => {
     }
   };
 
-  const component = renderer.create(<Main promoFilm={promoFilm} genres={genres} films={films} onMovieCardClick={onMovieCardClick}/>, options).toJSON();
+  const component = renderer.create(
+      <Provider store={store}>
+        <Main onMovieCardClick={onMovieCardClick}/>
+      </Provider>,
+      options).toJSON();
+
   expect(component).toMatchSnapshot();
 });
