@@ -1,33 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {MovieCardTabs} from '../../utils';
 import PageHeader from '../page-header/page-header.jsx';
-import MovieNav from '../movie-nav/movie-nav.jsx';
-import MovieCardOverview from '../movie-card-overview/movie-card-overview.jsx';
-import MovieCardDetails from '../movie-card-details/movie-card-details.jsx';
-import MovieCardReviews from '../movie-card-reviews/movie-card-reviews.jsx';
+import {MovieCardTabs} from '../../utils';
+import withActiveTab from '../../hocs/with-active-tab/with-active-tab.jsx';
+import MovieCardDesc from '../movie-card-desc/movie-card-desc.jsx';
 
-const MovieCardFull = (props) => {
-  const {
-    film,
-    activeTab,
-    onTabClick
-  } = props;
+const MovieCardDescWrapped = withActiveTab(MovieCardDesc, MovieCardTabs.OVERVIEW);
 
-  const _renderTab = () => {
-    switch (activeTab) {
-      case MovieCardTabs.OVERVIEW:
-        return <MovieCardOverview film={film}/>;
-      case MovieCardTabs.DETAILS:
-        return <MovieCardDetails film={film}/>;
-      case MovieCardTabs.REVIEWS:
-        return <MovieCardReviews film={film}/>;
-      default:
-        return null;
-    }
-  };
-
-  return <section className="movie-card movie-card--full">
+const MovieCardFull = ({film}) => (
+  <section className="movie-card movie-card--full">
     <div className="movie-card__hero">
       <div className="movie-card__bg">
         <img src={film.imageUrl} alt={film.title}/>
@@ -65,13 +46,12 @@ const MovieCardFull = (props) => {
             height="327"/>
         </div>
         <div className="movie-card__desc">
-          <MovieNav mix={`movie-card__nav`} activeTab={activeTab} onTabClick={onTabClick}/>
-          {_renderTab()}
+          <MovieCardDescWrapped film={film}/>
         </div>
       </div>
     </div>
-  </section>;
-};
+  </section>
+);
 
 MovieCardFull.propTypes = {
   film: PropTypes.exact({
@@ -98,9 +78,7 @@ MovieCardFull.propTypes = {
       date: PropTypes.string.isRequired,
       rating: PropTypes.number.isRequired
     }))
-  }),
-  activeTab: PropTypes.string.isRequired,
-  onTabClick: PropTypes.func.isRequired
+  })
 };
 
 export default MovieCardFull;
