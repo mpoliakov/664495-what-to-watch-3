@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PageHeader from '../page-header/page-header.jsx';
-import {convertScoreToGrade} from '../../utils';
+import {MovieCardTabs} from '../../utils';
+import withActiveTab from '../../hocs/with-active-tab/with-active-tab.jsx';
+import MovieCardDesc from '../movie-card-desc/movie-card-desc.jsx';
 
-const MovieCardFull = (props) => {
-  const {film} = props;
+const MovieCardDescWrapped = withActiveTab(MovieCardDesc, MovieCardTabs.OVERVIEW);
 
-  return <section className="movie-card movie-card--full">
+const MovieCardFull = ({film}) => (
+  <section className="movie-card movie-card--full">
     <div className="movie-card__hero">
       <div className="movie-card__bg">
         <img src={film.imageUrl} alt={film.title}/>
@@ -40,49 +42,27 @@ const MovieCardFull = (props) => {
     <div className="movie-card__wrap movie-card__translate-top">
       <div className="movie-card__info">
         <div className="movie-card__poster movie-card__poster--big">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327"/>
+          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
+            height="327"/>
         </div>
         <div className="movie-card__desc">
-          <nav className="movie-nav movie-card__nav">
-            <ul className="movie-nav__list">
-              <li className="movie-nav__item movie-nav__item--active">
-                <a href="#" className="movie-nav__link">Overview</a>
-              </li>
-              <li className="movie-nav__item">
-                <a href="#" className="movie-nav__link">Details</a>
-              </li>
-              <li className="movie-nav__item">
-                <a href="#" className="movie-nav__link">Reviews</a>
-              </li>
-            </ul>
-          </nav>
-          <div className="movie-rating">
-            <div className="movie-rating__score">{film.rating.score}</div>
-            <p className="movie-rating__meta">
-              <span className="movie-rating__level">{convertScoreToGrade(film.rating.score)}</span>
-              <span className="movie-rating__count">{film.rating.count} ratings</span>
-            </p>
-          </div>
-          <div className="movie-card__text">
-            <div dangerouslySetInnerHTML={{__html: film.description}}></div>
-            <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
-            <p className="movie-card__starring"><strong>Starring: {film.starring.join(`, `)} and
-              other</strong></p>
-          </div>
+          <MovieCardDescWrapped film={film}/>
         </div>
       </div>
     </div>
-  </section>;
-};
+  </section>
+);
 
 MovieCardFull.propTypes = {
   film: PropTypes.exact({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
     posterUrl: PropTypes.string,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.string,
+    runTime: PropTypes.string,
     meta: PropTypes.exact({
       genre: PropTypes.string.isRequired,
       releaseYear: PropTypes.number.isRequired
@@ -90,7 +70,14 @@ MovieCardFull.propTypes = {
     rating: PropTypes.exact({
       score: PropTypes.number,
       count: PropTypes.number
-    })
+    }),
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired
+    }))
   })
 };
 

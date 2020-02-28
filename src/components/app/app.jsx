@@ -43,6 +43,8 @@ class App extends React.PureComponent {
       films
     } = this.props;
 
+    const filmsLikeThat = films.filter((film) => film.meta.genre === promoFilm.meta.genre).slice(0, 4);
+
     return (
       <BrowserRouter>
         <Switch>
@@ -50,7 +52,7 @@ class App extends React.PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-film">
-            <MoviePage film={promoFilm} filmsLikeThat={films.slice(0, 4)} onMovieCardClick={this._handleMovieCardClick}/>
+            <MoviePage film={promoFilm} filmsLikeThat={filmsLikeThat} onMovieCardClick={this._handleMovieCardClick}/>
           </Route>
         </Switch>
       </BrowserRouter>
@@ -60,12 +62,14 @@ class App extends React.PureComponent {
 
 App.propTypes = {
   promoFilm: PropTypes.exact({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
     posterUrl: PropTypes.string,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.string,
+    runTime: PropTypes.string,
     meta: PropTypes.exact({
       genre: PropTypes.string.isRequired,
       releaseYear: PropTypes.number.isRequired
@@ -73,7 +77,14 @@ App.propTypes = {
     rating: PropTypes.exact({
       score: PropTypes.number,
       count: PropTypes.number
-    })
+    }),
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired
+    }))
   }),
   genres: PropTypes.arrayOf(PropTypes.string),
   films: PropTypes.arrayOf(PropTypes.shape({

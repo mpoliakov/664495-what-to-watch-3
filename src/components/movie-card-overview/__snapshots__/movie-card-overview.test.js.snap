@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MovieCardOverview/> is rendered correctly 1`] = `
+Array [
+  <div
+    className="movie-rating"
+  >
+    <div
+      className="movie-rating__score"
+    >
+      9.5
+    </div>
+    <p
+      className="movie-rating__meta"
+    >
+      <span
+        className="movie-rating__level"
+      >
+        Very good
+      </span>
+      <span
+        className="movie-rating__count"
+      >
+        345
+         ratings
+      </span>
+    </p>
+  </div>,
+  <div
+    className="movie-card__text"
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>",
+        }
+      }
+    />
+    <p
+      className="movie-card__director"
+    >
+      <strong>
+        Director: 
+        Christopher Nolan
+      </strong>
+    </p>
+    <p
+      className="movie-card__starring"
+    >
+      <strong>
+        Starring: 
+        Matthew McConaughey, Anne Hathaway, Jessica Chastain
+         and other
+      </strong>
+    </p>
+  </div>,
+]
+`;
