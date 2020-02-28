@@ -8,6 +8,6 @@ it(`<MovieNav/> is rendered correctly`, () => {
   const onNavClick = jest.fn();
   const mix = `movie-card__nav`;
 
-  const component = renderer.create(<MovieNav activeTab={activeTab} onNavClick={onNavClick} mix={mix}/>).toJSON();
+  const component = renderer.create(<MovieNav activeTab={activeTab} onTabClick={onNavClick} mix={mix}/>).toJSON();
   expect(component).toMatchSnapshot();
 });

@@ -77,7 +77,14 @@ App.propTypes = {
     rating: PropTypes.exact({
       score: PropTypes.number,
       count: PropTypes.number
-    })
+    }),
+    reviews: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired
+    }))
   }),
   genres: PropTypes.arrayOf(PropTypes.string),
   films: PropTypes.arrayOf(PropTypes.shape({

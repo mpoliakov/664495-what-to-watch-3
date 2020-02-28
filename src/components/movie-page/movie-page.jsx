@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PageContent from '../page-content/page-content.jsx';
-import MovieCardFull from '../movie-card-full/movie-card-full.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
+import MovieCardFull from '../movie-card-full/movie-card-full.jsx';
+import withActiveTab from '../../hocs/with-active-tab/with-active-tab.jsx';
+import {MovieCardTabs} from '../../utils';
+
+const MovieCardWrapped = withActiveTab(MovieCardFull, MovieCardTabs.OVERVIEW);
 
 const MoviePage = (props) => {
   const {
@@ -12,7 +16,7 @@ const MoviePage = (props) => {
   } = props;
 
   return <React.Fragment>
-    <MovieCardFull film={film}/>
+    <MovieCardWrapped film={film}/>
     <PageContent>
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
