@@ -17,7 +17,7 @@ const MoviePage = (props) => {
     <PageContent>
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
-        <MoviesList films={filmsLikeThat} onMovieCardClick={onMovieCardClick}/>
+        <MoviesList items={filmsLikeThat} onMovieCardClick={onMovieCardClick}/>
       </section>
     </PageContent>
   </React.Fragment>;
