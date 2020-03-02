@@ -245,9 +245,9 @@ it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     films,
     reviews,
-    promoFilmId: `b47f3158-76c2-4f9b-b511-35419259ce63`,
-    filmId: ``,
-    genreFilter: ``
+    promoFilm: films[0],
+    genreFilter: ``,
+    filteredFilms: films.slice(1)
   });
 });
 
@@ -280,11 +280,69 @@ it(`Reducer should change genre to selected filter`, () => {
   });
 });
 
+it(`Reducer should set filtered films`, () => {
+  expect(reducer({
+    filteredFilms: []
+  }, {
+    type: ActionType.GET_FILTERED_FILMS,
+    payload: films
+  })).toEqual({
+    filteredFilms: films
+  });
+});
+
 describe(`Action creators work correctly`, () => {
   it(`Action creator for genre filter change returns correct action`, () => {
     expect(ActionCreator.changeGenreFilter(`Horror`)).toEqual({
       type: ActionType.CHANGE_GENRE_FILTER,
       payload: `Horror`,
+    });
+  });
+
+  it(`Action creator for filtered films returns correct action`, () => {
+    const mockedFilms = [
+      {
+        id: `b47f3158-76c2-4f9b-b511-35419259ce63`,
+        title: `The Grand Budapest Hotel`,
+        meta: {
+          genre: `Drama`
+        }
+      },
+      {
+        id: `fe2f95b4-22ba-4b5d-b3f5-7fb50bb230bb`,
+        title: `Fantastic Beasts: The Crimes of Grindelwald`,
+        meta: {
+          genre: `Fantasy`,
+        }
+      },
+      {
+        id: `0bcb460d-4fa6-466d-8c60-42dd66ec5863`,
+        title: `Bohemian Rhapsody`,
+        meta: {
+          genre: `Drama`,
+        }
+      }
+    ];
+
+    const getState = () => ({
+      genreFilter: `Drama`,
+      promoFilm: mockedFilms[0],
+      films: mockedFilms
+    });
+
+    const dispatch = jest.fn();
+
+    ActionCreator.getFilteredFilms()(dispatch, getState);
+
+    expect(dispatch).toBeCalledWith({
+      type: ActionType.GET_FILTERED_FILMS,
+      payload: [{
+        id: `0bcb460d-4fa6-466d-8c60-42dd66ec5863`,
+        title: `Bohemian Rhapsody`,
+        meta: {
+          genre: `Drama`,
+        }
+      }]
     });
   });
 });

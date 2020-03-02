@@ -62,10 +62,9 @@ const films = [
 it(`<Main/> is rendered correctly`, () => {
   const store = mockStore({
     films,
-    reviews: [],
-    promoFilmId: `b47f3158-76c2-4f9b-b511-35419259ce63`,
-    filmId: ``,
-    genreFilter: ``
+    promoFilm: films[0],
+    genreFilter: ``,
+    filteredFilms: films.slice(1)
   });
 
   const onMovieCardClick = jest.fn();

@@ -64,15 +64,16 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  promoFilm: state.films.find((f) => f.id === state.promoFilmId),
+  promoFilm: state.promoFilm,
   genres: [...new Set(state.films.map((film) => film.meta.genre))].sort(),
   genreFilter: state.genreFilter,
-  films: state.films.filter((f) => f.id !== state.promoFilmId && (!state.genreFilter || f.meta.genre === state.genreFilter)),
+  films: state.filteredFilms,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreClick(genre) {
     dispatch(ActionCreator.changeGenreFilter(genre));
+    dispatch(ActionCreator.getFilteredFilms());
   },
 });
 

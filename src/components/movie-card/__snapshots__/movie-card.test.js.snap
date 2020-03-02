@@ -8,7 +8,7 @@ exports[`<MovieCard/> is rendered correctly 1`] = `
     className="movie-card__bg"
   >
     <img
-      alt="The Grand Budapest Hotel"
+      alt="The Saw"
       src="img/saw.jpg"
     />
   </div>
@@ -68,7 +68,7 @@ exports[`<MovieCard/> is rendered correctly 1`] = `
         className="movie-card__poster"
       >
         <img
-          alt="The Grand Budapest Hotel poster"
+          alt="The Saw poster"
           height="327"
           src="img/saw-poster.jpg"
           width="218"

@@ -58,7 +58,7 @@ MoviePage.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const film = state.films.find((f) => f.id === state.promoFilmId); // should by state.filmId, but only promoFilm has all the data for now
+  const film = state.promoFilm; // state.films.find((f) => f.id === state.filmId); - should by state.filmId, but only promoFilm has all the data for now
   film.reviews = state.reviews.filter((r) => r.filmId === film.id);
 
   return {
