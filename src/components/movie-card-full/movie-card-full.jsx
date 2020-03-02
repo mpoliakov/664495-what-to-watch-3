@@ -59,6 +59,7 @@ MovieCardFull.propTypes = {
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
     posterUrl: PropTypes.string,
+    videoUrl: PropTypes.string,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.string,

@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Interstellar"
-          src="img/interstellar.jpg"
+          alt="The Grand Budapest Hotel"
+          src="img/bg-the-grand-budapest-hotel.jpg"
         />
       </div>
       <h1
@@ -71,7 +71,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Interstellar
+            The Grand Budapest Hotel
           </h2>
           <p
             className="movie-card__meta"
@@ -79,12 +79,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Sci-Fi
+              Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2015
             </span>
           </p>
           <div
@@ -200,7 +200,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              9.5
+              8.5
             </div>
             <p
               className="movie-rating__meta"
@@ -213,7 +213,7 @@ Array [
               <span
                 className="movie-rating__count"
               >
-                345
+                120
                  ratings
               </span>
             </p>
@@ -224,7 +224,11 @@ Array [
             <div
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "<p>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>",
+                  "__html": "<p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
+              Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.</p>
+            <p>Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the
+              sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously,
+              Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>",
                 }
               }
             />
@@ -233,7 +237,7 @@ Array [
             >
               <strong>
                 Director: 
-                Christopher Nolan
+                Wes Andreson
               </strong>
             </p>
             <p
@@ -241,7 +245,7 @@ Array [
             >
               <strong>
                 Starring: 
-                Matthew McConaughey, Anne Hathaway, Jessica Chastain
+                Bill Murray, Edward Norton, Jude Law, Willem Dafoe
                  and other
               </strong>
             </p>
@@ -284,7 +288,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Raining Man
+              Bohemian Rhapsody
             </a>
           </h3>
         </article>
@@ -308,31 +312,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Predator
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              onLoadStart={[Function]}
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Harry Potter
+              Macbeth
             </a>
           </h3>
         </article>

@@ -19,3 +19,7 @@ export const MovieCardTabs = {
   DETAILS: `Details`,
   REVIEWS: `Reviews`
 };
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};

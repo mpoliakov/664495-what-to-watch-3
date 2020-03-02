@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import PageContent from '../page-content/page-content.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
 import MovieCardFull from '../movie-card-full/movie-card-full.jsx';
@@ -28,6 +29,7 @@ MoviePage.propTypes = {
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
     posterUrl: PropTypes.string,
+    videoUrl: PropTypes.string,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.string,
@@ -55,4 +57,15 @@ MoviePage.propTypes = {
   onMovieCardClick: PropTypes.func.isRequired
 };
 
-export default MoviePage;
+const mapStateToProps = (state) => {
+  const film = state.promoFilm; // state.films.find((f) => f.id === state.filmId); - should by state.filmId, but only promoFilm has all the data for now
+  film.reviews = state.reviews.filter((r) => r.filmId === film.id);
+
+  return {
+    film,
+    filmsLikeThat: state.films.filter((f) => f.meta.genre === film.meta.genre && f.id !== film.id).slice(0, 4)
+  };
+};
+
+export {MoviePage};
+export default connect(mapStateToProps)(MoviePage);
