@@ -39,9 +39,9 @@ it(`<MovieCardDesc/> is rendered correctly`, () => {
     ]
   };
 
-  const activeTab = MovieCardTabs.DETAILS;
-  const onTabClick = jest.fn();
+  const activeItem = MovieCardTabs.DETAILS;
+  const onActivate = jest.fn();
 
-  const component = renderer.create(<MovieCardDesc film={film} activeTab={activeTab} onTabClick={onTabClick}/>).toJSON();
+  const component = renderer.create(<MovieCardDesc film={film} activeItem={activeItem} onActivate={onActivate}/>).toJSON();
   expect(component).toMatchSnapshot();
 });

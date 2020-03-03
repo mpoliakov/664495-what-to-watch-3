@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SmallMovieCard from '../small-movie-card/small-movie-card.jsx';
+import withActiveState from '../../hocs/with-active-state/with-active-state.jsx';
 import withVideoPlayer from '../../hocs/with-video-player/with-video-player.jsx';
 
-const MovieCardWithPlayer = withVideoPlayer(SmallMovieCard);
+const MovieCardWithPlayer = withActiveState(withVideoPlayer(SmallMovieCard));
 
 const MoviesList = (props) => {
   const {

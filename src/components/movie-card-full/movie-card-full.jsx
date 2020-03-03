@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageHeader from '../page-header/page-header.jsx';
 import {MovieCardTabs} from '../../utils';
-import withActiveTab from '../../hocs/with-active-tab/with-active-tab.jsx';
+import withActiveState from '../../hocs/with-active-state/with-active-state.jsx';
 import MovieCardDesc from '../movie-card-desc/movie-card-desc.jsx';
 
-const MovieCardDescWrapped = withActiveTab(MovieCardDesc, MovieCardTabs.OVERVIEW);
+const MovieCardDescWrapped = withActiveState(MovieCardDesc, MovieCardTabs.OVERVIEW);
 
 const MovieCardFull = ({film}) => (
   <section className="movie-card movie-card--full">

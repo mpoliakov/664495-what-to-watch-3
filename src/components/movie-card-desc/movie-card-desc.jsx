@@ -9,12 +9,12 @@ import MovieCardReviews from '../movie-card-reviews/movie-card-reviews.jsx';
 const MovieCardDesc = (props) => {
   const {
     film,
-    activeTab,
-    onTabClick
+    activeItem,
+    onActivate
   } = props;
 
   const _renderTab = () => {
-    switch (activeTab) {
+    switch (activeItem) {
       case MovieCardTabs.OVERVIEW:
         return <MovieCardOverview film={film}/>;
       case MovieCardTabs.DETAILS:
@@ -27,7 +27,7 @@ const MovieCardDesc = (props) => {
   };
 
   return <React.Fragment>
-    <MovieNav mix={`movie-card__nav`} activeTab={activeTab} onTabClick={onTabClick}/>
+    <MovieNav mix={`movie-card__nav`} activeTab={activeItem} onTabClick={onActivate}/>
     {_renderTab()}
   </React.Fragment>;
 };
@@ -59,8 +59,8 @@ MovieCardDesc.propTypes = {
       rating: PropTypes.number.isRequired
     }))
   }),
-  activeTab: PropTypes.string.isRequired,
-  onTabClick: PropTypes.func.isRequired
+  activeItem: PropTypes.string.isRequired,
+  onActivate: PropTypes.func.isRequired
 };
 
 export default MovieCardDesc;
