@@ -6,6 +6,9 @@ import MovieCard from '../movie-card/movie-card.jsx';
 import PageContent from '../page-content/page-content.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
+import withShowMore from '../../hocs/with-show-more/with-show-more.jsx';
+
+const MoviesListWrapped = withShowMore(MoviesList, 8);
 
 const Main = (props) => {
   const {
@@ -23,10 +26,7 @@ const Main = (props) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         <GenresList genres={genres} activeGenre={genreFilter} onGenreClick={onGenreClick} />
-        <MoviesList films={films} onMovieCardClick={onMovieCardClick}/>
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
+        <MoviesListWrapped items={films} onMovieCardClick={onMovieCardClick}/>
       </section>
     </PageContent>
   </React.Fragment>;
