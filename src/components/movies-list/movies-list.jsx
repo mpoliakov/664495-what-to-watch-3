@@ -23,9 +23,7 @@ const MoviesList = (props) => {
 
 MoviesList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string
+    id: PropTypes.string.isRequired
   })),
   onMovieCardClick: PropTypes.func.isRequired
 };
