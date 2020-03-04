@@ -4,9 +4,10 @@ import GenresList from './genres-list.jsx';
 
 it(`<GenresList/> is rendered correctly`, () => {
   const genres = [`Comedies`, `Dramas`, `Sci-Fi`];
-  const activeGenre = `Drama`;
-  const onGenreClick = jest.fn();
+  const activeItem = `Drama`;
+  const onActivate = jest.fn();
+  const onGenreChange = jest.fn();
 
-  const component = renderer.create(<GenresList genres={genres} activeGenre={activeGenre} onGenreClick={onGenreClick}/>).toJSON();
+  const component = renderer.create(<GenresList items={genres} activeItem={activeItem} onActivate={onActivate} onGenreChange={onGenreChange}/>).toJSON();
   expect(component).toMatchSnapshot();
 });
