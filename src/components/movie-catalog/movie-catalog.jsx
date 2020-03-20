@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer';
 import GenresList from '../genres-list/genres-list.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
 import withActiveState from '../../hocs/with-active-state/with-active-state.jsx';
 import withShowMore from '../../hocs/with-show-more/with-show-more.jsx';
+import {ActionCreator} from '../../reducer/catalog/reducer';
+import {getGenres, getGenreFilter, getFilteredFilms} from '../../reducer/catalog/selectors';
 
 const GenresListWrapped = withActiveState(GenresList);
 const MoviesListWrapped = withShowMore(MoviesList, 8);
@@ -19,38 +20,35 @@ class MovieCatalog extends React.PureComponent {
     const {
       films,
       genres,
-      onGenreChange,
-      onMovieCardClick
+      handleGenreChange,
     } = this.props;
 
     return <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
-      <GenresListWrapped items={genres} onGenreChange={onGenreChange} />
-      <MoviesListWrapped items={films} onMovieCardClick={onMovieCardClick}/>
+      <GenresListWrapped items={genres} onGenreChange={handleGenreChange} />
+      <MoviesListWrapped items={films}/>
     </section>;
   }
 }
 
 MovieCatalog.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired
+    id: PropTypes.number.isRequired
   })),
   genres: PropTypes.arrayOf(PropTypes.string),
   genreFilter: PropTypes.string,
-  onGenreChange: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired
+  handleGenreChange: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  films: state.filteredFilms,
-  genres: [...new Set(state.films.map((film) => film.meta.genre))].sort(),
-  genreFilter: state.genreFilter
+  films: getFilteredFilms(state),
+  genres: getGenres(state),
+  genreFilter: getGenreFilter(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onGenreChange(genre) {
+  handleGenreChange: (genre) => {
     dispatch(ActionCreator.changeGenreFilter(genre));
-    dispatch(ActionCreator.getFilteredFilms());
   },
 });
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {convertMinsToHrsMins} from '../../utils';
 
 const MovieCardDetails = ({film}) => (
   <div className="movie-card__text movie-card__row">
@@ -18,15 +19,15 @@ const MovieCardDetails = ({film}) => (
     <div className="movie-card__text-col">
       <p className="movie-card__details-item">
         <strong className="movie-card__details-name">Run Time</strong>
-        <span className="movie-card__details-value">{film.runTime}</span>
+        <span className="movie-card__details-value">{convertMinsToHrsMins(film.runTime)}</span>
       </p>
       <p className="movie-card__details-item">
         <strong className="movie-card__details-name">Genre</strong>
-        <span className="movie-card__details-value">{film.meta.genre}</span>
+        <span className="movie-card__details-value">{film.genre}</span>
       </p>
       <p className="movie-card__details-item">
         <strong className="movie-card__details-name">Released</strong>
-        <span className="movie-card__details-value">{film.meta.releaseYear}</span>
+        <span className="movie-card__details-value">{film.released}</span>
       </p>
     </div>
   </div>
@@ -34,16 +35,24 @@ const MovieCardDetails = ({film}) => (
 
 MovieCardDetails.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number,
+    scoresCount: PropTypes.number,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    meta: PropTypes.exact({
-      genre: PropTypes.string.isRequired,
-      releaseYear: PropTypes.number.isRequired
-    })
-  })
+    runTime: PropTypes.number,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool,
+    videoLink: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired,
+  }),
 };
 
 export default MovieCardDetails;

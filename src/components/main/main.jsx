@@ -2,47 +2,47 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import PageContent from '../page-content/page-content.jsx';
-import MovieCard from '../movie-card/movie-card.jsx';
+import MovieCardPromo from '../movie-card-promo/movie-card-promo.jsx';
 import MovieCatalog from '../movie-catalog/movie-catalog.jsx';
+import {getPromoFilm} from '../../reducer/catalog/selectors';
 
 const Main = (props) => {
   const {
     promoFilm,
-    onMovieCardClick
   } = props;
 
   return <React.Fragment>
-    <MovieCard film={promoFilm}/>
+    <MovieCardPromo film={promoFilm}/>
     <PageContent>
-      <MovieCatalog onMovieCardClick={onMovieCardClick}/>
+      <MovieCatalog/>
     </PageContent>
   </React.Fragment>;
 };
 
 Main.propTypes = {
   promoFilm: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string,
-    posterUrl: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number,
+    scoresCount: PropTypes.number,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string,
-    runTime: PropTypes.string,
-    meta: PropTypes.exact({
-      genre: PropTypes.string.isRequired,
-      releaseYear: PropTypes.number.isRequired
-    }),
-    rating: PropTypes.exact({
-      score: PropTypes.number,
-      count: PropTypes.number
-    })
+    runTime: PropTypes.number,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool,
+    videoLink: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired
   }),
-  onMovieCardClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  promoFilm: state.promoFilm,
+  promoFilm: getPromoFilm(state),
 });
 
 export {Main};
