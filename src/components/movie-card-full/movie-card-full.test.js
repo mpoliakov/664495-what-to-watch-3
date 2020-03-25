@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {BrowserRouter} from 'react-router-dom';
 import MovieCardFull from './movie-card-full.jsx';
 
 it(`<MovieCardFull/> is rendered correctly`, () => {
@@ -50,6 +51,11 @@ it(`<MovieCardFull/> is rendered correctly`, () => {
     }
   ];
 
-  const component = renderer.create(<MovieCardFull film={film} reviews={reviews} />).toJSON();
+  const component = renderer.create(
+      <BrowserRouter>
+        <MovieCardFull film={film} reviews={reviews} />
+      </BrowserRouter>
+  ).toJSON();
+
   expect(component).toMatchSnapshot();
 });

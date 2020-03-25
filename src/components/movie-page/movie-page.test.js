@@ -1,12 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
-import {BrowserRouter} from 'react-router-dom';
+import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
+import {BrowserRouter} from 'react-router-dom';
 import Namespace from '../../reducer/namespace';
 import MoviePage from './movie-page.jsx';
 
-const mockStore = configureStore([]);
+const mockStore = configureStore([thunk]);
 
 const films = [
   {
@@ -84,7 +85,7 @@ it(`<MoviePage/> is rendered correctly`, () => {
       films
     },
     [Namespace.FILM]: {
-      filmId: 1,
+      film: films[0],
       reviews
     }
   });

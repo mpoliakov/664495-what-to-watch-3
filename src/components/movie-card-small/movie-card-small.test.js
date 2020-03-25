@@ -7,7 +7,7 @@ import MovieCardSmall from './movie-card-small.jsx';
 
 const mockStore = configureStore([]);
 
-it(`<SmallMovieCard/> is rendered correctly`, () => {
+it(`<MovieCardSmall/> is rendered correctly`, () => {
   const film = {
     id: 1,
     name: `Alien`,

@@ -15,10 +15,13 @@ class MoviePage extends React.PureComponent {
   componentDidMount() {
     const {
       match,
-      loadComponentData,
+      loadFilm,
+      loadReviews,
     } = this.props;
 
-    loadComponentData(match.params.id);
+    const filmId = Number(match.params.id);
+    loadFilm(filmId);
+    loadReviews(filmId);
   }
 
   render() {
@@ -82,7 +85,8 @@ MoviePage.propTypes = {
   filmsLikeThat: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
   })),
-  loadComponentData: PropTypes.func.isRequired,
+  loadFilm: PropTypes.func.isRequired,
+  loadReviews: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -92,9 +96,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loadComponentData: (filmId) => {
-    dispatch(Operation.loadReviews(filmId));
+  loadFilm: (filmId) => {
+    dispatch(Operation.loadFilm(filmId));
   },
+  loadReviews: (filmId) => {
+    dispatch(Operation.loadReviews(filmId));
+  }
 });
 
 export {MoviePage};

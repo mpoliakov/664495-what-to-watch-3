@@ -1,16 +1,14 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import history from '../../history';
 import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 
 const App = () => (
-  <BrowserRouter>
+  <BrowserRouter history={history}>
     <Switch>
-      <Route path="/" exact>
-        <Main/>
-      </Route>
-      <Route path="/films/:id" component={MoviePage} exact>
-      </Route>
+      <Route path="/" component={Main} exact/>
+      <Route path="/films/:id" component={MoviePage} exact/>
     </Switch>
   </BrowserRouter>
 );

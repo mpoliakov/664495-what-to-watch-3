@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {ActionCreator} from '../../reducer/film/reducer';
 
 class MovieCardSmall extends React.PureComponent {
   constructor(props) {
@@ -15,7 +13,6 @@ class MovieCardSmall extends React.PureComponent {
       renderVideoPlayer,
       onMouseEnter,
       onMouseLeave,
-      handleLinkClick,
     } = this.props;
 
     return <article className="small-movie-card catalog__movies-card" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
@@ -23,7 +20,7 @@ class MovieCardSmall extends React.PureComponent {
         {renderVideoPlayer(film)}
       </div>
       <h3 className="small-movie-card__title">
-        <Link className="small-movie-card__link" to={`/films/${film.id}`} onClick={() => handleLinkClick(film)}>{film.name}</Link>
+        <Link className="small-movie-card__link" to={`/films/${film.id}`}>{film.name}</Link>
       </h3>
     </article>;
   }
@@ -39,14 +36,6 @@ MovieCardSmall.propTypes = {
   renderVideoPlayer: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-  handleLinkClick: PropTypes.func
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  handleLinkClick: (film) => {
-    dispatch(ActionCreator.loadFilm(film));
-  }
-});
-
-export {MovieCardSmall};
-export default connect(null, mapDispatchToProps)(MovieCardSmall);
+export default MovieCardSmall;

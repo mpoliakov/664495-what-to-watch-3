@@ -50,7 +50,7 @@ const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        const films = response.data.map((i) => convertFilm(i));
+        const films = response.data.map(convertFilm);
         dispatch(ActionCreator.loadFilms(films));
       });
   },

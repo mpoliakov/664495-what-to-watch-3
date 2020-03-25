@@ -1,4 +1,6 @@
 import {extend} from '../../utils';
+import {getFilms} from '../catalog/selectors';
+import {convertFilm} from '../../utils';
 
 const initialState = {
   film: null,
@@ -38,6 +40,21 @@ const reducer = (state = initialState, action) => {
 };
 
 const Operation = {
+  loadFilm: (filmId) => (dispatch, getState, api) => {
+    const films = getFilms(getState());
+
+    if (!films.length) {
+      api.get(`/films`)
+        .then((response) => {
+          const responseFilms = response.data.map(convertFilm);
+          const filteredFilm = responseFilms.find((film) => film.id === filmId);
+          dispatch(ActionCreator.loadFilm(filteredFilm));
+        });
+    } else {
+      const filteredFilm = films.find((film) => film.id === filmId);
+      dispatch(ActionCreator.loadFilm(filteredFilm));
+    }
+  },
   loadReviews: (filmId) => (dispatch, getState, api) => {
     return api.get(`/comments/${filmId}`)
       .then((response) => {

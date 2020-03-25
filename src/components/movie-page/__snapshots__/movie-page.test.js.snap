@@ -29,6 +29,8 @@ Array [
         >
           <a
             className="logo__link"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -270,7 +272,6 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -286,7 +287,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/3"
+              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -294,7 +296,6 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -310,7 +311,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/4"
+              onClick={[Function]}
             >
               Macbeth
             </a>

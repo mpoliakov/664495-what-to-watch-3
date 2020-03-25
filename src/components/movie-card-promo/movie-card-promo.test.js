@@ -1,8 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {BrowserRouter} from 'react-router-dom';
 import MovieCardPromo from './movie-card-promo.jsx';
 
-it(`<MovieCard/> is rendered correctly`, () => {
+it(`<MovieCardPromo/> is rendered correctly`, () => {
   const film = {
     id: 1,
     name: `The Grand Budapest Hotel`,
@@ -27,6 +28,11 @@ it(`<MovieCard/> is rendered correctly`, () => {
     previewVideoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   };
 
-  const component = renderer.create(<MovieCardPromo film={film} />).toJSON();
+  const component = renderer.create(
+      <BrowserRouter>
+        <MovieCardPromo film={film} />
+      </BrowserRouter>
+  ).toJSON();
+
   expect(component).toMatchSnapshot();
 });
