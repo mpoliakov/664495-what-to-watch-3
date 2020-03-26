@@ -22,26 +22,3 @@ exports[`<MovieCardSmall/> is rendered correctly 1`] = `
   </h3>
 </article>
 `;
-
-exports[`<SmallMovieCard/> is rendered correctly 1`] = `
-<article
-  className="small-movie-card catalog__movies-card"
-  onMouseEnter={[MockFunction]}
-  onMouseLeave={[MockFunction]}
->
-  <div
-    className="small-movie-card__image"
-  />
-  <h3
-    className="small-movie-card__title"
-  >
-    <a
-      className="small-movie-card__link"
-      href="/films/1"
-      onClick={[Function]}
-    >
-      Alien
-    </a>
-  </h3>
-</article>
-`;

@@ -1,13 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {Provider} from 'react-redux';
+
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
-import {BrowserRouter} from 'react-router-dom';
+import {createAPI} from '../../api';
 import Namespace from '../../reducer/namespace';
+
+import {Provider} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
 import MoviePage from './movie-page.jsx';
 
-const mockStore = configureStore([thunk]);
+const api = createAPI();
+const mockStore = configureStore([thunk.withExtraArgument(api)]);
 
 const films = [
   {
