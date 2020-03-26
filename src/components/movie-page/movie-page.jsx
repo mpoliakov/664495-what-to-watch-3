@@ -4,68 +4,105 @@ import {connect} from 'react-redux';
 import PageContent from '../page-content/page-content.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
 import MovieCardFull from '../movie-card-full/movie-card-full.jsx';
+import {getFilm, getFilmsLikeThat, getReviews} from '../../reducer/film/selectors';
+import {Operation} from '../../reducer/film/reducer';
 
-const MoviePage = (props) => {
-  const {
-    film,
-    filmsLikeThat,
-    onMovieCardClick
-  } = props;
+class MoviePage extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return <React.Fragment>
-    <MovieCardFull film={film}/>
-    <PageContent>
-      <section className="catalog catalog--like-this">
-        <h2 className="catalog__title">More like this</h2>
-        <MoviesList films={filmsLikeThat} onMovieCardClick={onMovieCardClick}/>
-      </section>
-    </PageContent>
-  </React.Fragment>;
-};
+  componentDidMount() {
+    const {
+      match,
+      loadFilm,
+      loadReviews,
+    } = this.props;
+
+    const filmId = Number(match.params.id);
+    loadFilm(filmId);
+    loadReviews(filmId);
+  }
+
+  render() {
+    const {
+      film,
+      reviews,
+      filmsLikeThat,
+    } = this.props;
+
+    if (!film) {
+      return null;
+    }
+
+    return <React.Fragment>
+      <MovieCardFull film={film} reviews={reviews}/>
+      <PageContent>
+        <section className="catalog catalog--like-this">
+          <h2 className="catalog__title">More like this</h2>
+          <MoviesList films={filmsLikeThat}/>
+        </section>
+      </PageContent>
+    </React.Fragment>;
+  }
+}
 
 MoviePage.propTypes = {
-  film: PropTypes.exact({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string,
-    posterUrl: PropTypes.string,
-    videoUrl: PropTypes.string,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }),
+  film: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number,
+    scoresCount: PropTypes.number,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string,
-    runTime: PropTypes.string,
-    meta: PropTypes.exact({
-      genre: PropTypes.string.isRequired,
-      releaseYear: PropTypes.number.isRequired
-    }),
-    rating: PropTypes.exact({
-      score: PropTypes.number,
-      count: PropTypes.number
-    }),
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired
-    }))
+    runTime: PropTypes.number,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool,
+    videoLink: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired,
   }),
-  filmsLikeThat: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    user: PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+    rating: PropTypes.number.isRequired,
+    comment: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
   })),
-  onMovieCardClick: PropTypes.func.isRequired
+  filmsLikeThat: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  })),
+  loadFilm: PropTypes.func.isRequired,
+  loadReviews: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const film = state.promoFilm; // state.films.find((f) => f.id === state.filmId); - should by state.filmId, but only promoFilm has all the data for now
-  film.reviews = state.reviews.filter((r) => r.filmId === film.id);
+const mapStateToProps = (state) => ({
+  film: getFilm(state),
+  reviews: getReviews(state),
+  filmsLikeThat: getFilmsLikeThat(state),
+});
 
-  return {
-    film,
-    filmsLikeThat: state.films.filter((f) => f.meta.genre === film.meta.genre && f.id !== film.id).slice(0, 4)
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  loadFilm: (filmId) => {
+    dispatch(Operation.loadFilm(filmId));
+  },
+  loadReviews: (filmId) => {
+    dispatch(Operation.loadReviews(filmId));
+  }
+});
 
 export {MoviePage};
-export default connect(mapStateToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

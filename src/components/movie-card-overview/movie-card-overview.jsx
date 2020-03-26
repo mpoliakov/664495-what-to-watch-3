@@ -5,10 +5,10 @@ import {convertScoreToGrade} from '../../utils';
 const MovieCardOverview = ({film}) => (
   <React.Fragment>
     <div className="movie-rating">
-      <div className="movie-rating__score">{film.rating.score}</div>
+      <div className="movie-rating__score">{film.rating}</div>
       <p className="movie-rating__meta">
-        <span className="movie-rating__level">{convertScoreToGrade(film.rating.score)}</span>
-        <span className="movie-rating__count">{film.rating.count} ratings</span>
+        <span className="movie-rating__level">{convertScoreToGrade(film.rating)}</span>
+        <span className="movie-rating__count">{film.scoresCount} ratings</span>
       </p>
     </div>
     <div className="movie-card__text">
@@ -22,14 +22,24 @@ const MovieCardOverview = ({film}) => (
 
 MovieCardOverview.propTypes = {
   film: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number,
+    scoresCount: PropTypes.number,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string,
-    rating: PropTypes.exact({
-      score: PropTypes.number,
-      count: PropTypes.number
-    })
-  })
+    runTime: PropTypes.number,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool,
+    videoLink: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired,
+  }),
 };
 
 export default MovieCardOverview;

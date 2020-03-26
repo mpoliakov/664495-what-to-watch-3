@@ -60,7 +60,7 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          Christopher Nolan
+          Martin Scorsese
         </span>
       </p>
       <p
@@ -74,13 +74,13 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          Matthew McConaughey
+          Leonardo DiCaprio
           , 
           <br />
-          Anne Hathaway
+          Cate Blanchett
           , 
           <br />
-          Jessica Chastain
+          Kate Beckinsale
         </span>
       </p>
     </div>
@@ -98,7 +98,7 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          2h 15m
+          2h 50m
         </span>
       </p>
       <p
@@ -112,7 +112,7 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          Sci-Fi
+          Drama
         </span>
       </p>
       <p

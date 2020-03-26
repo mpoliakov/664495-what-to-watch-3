@@ -8,7 +8,7 @@ Array [
     <div
       className="movie-rating__score"
     >
-      9.5
+      9.8
     </div>
     <p
       className="movie-rating__meta"
@@ -21,7 +21,7 @@ Array [
       <span
         className="movie-rating__count"
       >
-        345
+        307174
          ratings
       </span>
     </p>
@@ -32,7 +32,7 @@ Array [
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<p>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>",
+          "__html": "A biopic depicting the early years of legendary Director and aviator Howard Hughes' career from the late 1920s to the mid 1940s.",
         }
       }
     />
@@ -41,7 +41,7 @@ Array [
     >
       <strong>
         Director: 
-        Christopher Nolan
+        Martin Scorsese
       </strong>
     </p>
     <p
@@ -49,7 +49,7 @@ Array [
     >
       <strong>
         Starring: 
-        Matthew McConaughey, Anne Hathaway, Jessica Chastain
+        Leonardo DiCaprio, Cate Blanchett, Kate Beckinsale
          and other
       </strong>
     </p>

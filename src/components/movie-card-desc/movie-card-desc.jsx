@@ -9,9 +9,14 @@ import MovieCardReviews from '../movie-card-reviews/movie-card-reviews.jsx';
 const MovieCardDesc = (props) => {
   const {
     film,
+    reviews,
     activeItem,
     onActivate
   } = props;
+
+  if (!film) {
+    return null;
+  }
 
   const _renderTab = () => {
     switch (activeItem) {
@@ -20,7 +25,7 @@ const MovieCardDesc = (props) => {
       case MovieCardTabs.DETAILS:
         return <MovieCardDetails film={film}/>;
       case MovieCardTabs.REVIEWS:
-        return <MovieCardReviews film={film}/>;
+        return <MovieCardReviews reviews={reviews}/>;
       default:
         return null;
     }
@@ -33,32 +38,35 @@ const MovieCardDesc = (props) => {
 };
 
 MovieCardDesc.propTypes = {
-  film: PropTypes.exact({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string,
-    posterUrl: PropTypes.string,
-    videoUrl: PropTypes.string,
+  film: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number,
+    scoresCount: PropTypes.number,
     director: PropTypes.string.isRequired,
     starring: PropTypes.arrayOf(PropTypes.string),
-    description: PropTypes.string,
-    runTime: PropTypes.string,
-    meta: PropTypes.exact({
-      genre: PropTypes.string.isRequired,
-      releaseYear: PropTypes.number.isRequired
-    }),
-    rating: PropTypes.exact({
-      score: PropTypes.number,
-      count: PropTypes.number
-    }),
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired
-    }))
+    runTime: PropTypes.number,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool,
+    videoLink: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired,
   }),
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    user: PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+    rating: PropTypes.number.isRequired,
+    comment: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+  })),
   activeItem: PropTypes.string.isRequired,
   onActivate: PropTypes.func.isRequired
 };

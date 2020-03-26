@@ -24,13 +24,13 @@ class VideoPlayer extends PureComponent {
     } = this.props;
 
     const video = this._videoRef.current;
-    video.poster = film.imageUrl;
+    video.poster = film.previewImage;
     video.muted = muted;
     video.width = width;
     video.height = height;
 
-    if (film.videoUrl) {
-      video.src = film.videoUrl;
+    if (film.previewVideoLink) {
+      video.src = film.previewVideoLink;
     }
   }
 
@@ -66,10 +66,10 @@ class VideoPlayer extends PureComponent {
 
 VideoPlayer.propTypes = {
   film: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string,
-    videoUrl: PropTypes.string
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired,
   }),
   isPlaying: PropTypes.bool,
   muted: PropTypes.bool,

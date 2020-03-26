@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<MovieCard/> is rendered correctly 1`] = `
+exports[`<MovieCardPromo/> is rendered correctly 1`] = `
 <section
   className="movie-card"
 >
@@ -8,8 +8,8 @@ exports[`<MovieCard/> is rendered correctly 1`] = `
     className="movie-card__bg"
   >
     <img
-      alt="The Saw"
-      src="img/saw.jpg"
+      alt="The Grand Budapest Hotel"
+      src="img/the-grand-budapest-hotel-poster.jpg"
     />
   </div>
   <h1
@@ -25,6 +25,8 @@ exports[`<MovieCard/> is rendered correctly 1`] = `
     >
       <a
         className="logo__link"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -68,9 +70,9 @@ exports[`<MovieCard/> is rendered correctly 1`] = `
         className="movie-card__poster"
       >
         <img
-          alt="The Saw poster"
+          alt="The Grand Budapest Hotel poster"
           height="327"
-          src="img/saw-poster.jpg"
+          src=""
           width="218"
         />
       </div>
@@ -80,7 +82,7 @@ exports[`<MovieCard/> is rendered correctly 1`] = `
         <h2
           className="movie-card__title"
         >
-          The Saw
+          The Grand Budapest Hotel
         </h2>
         <p
           className="movie-card__meta"
@@ -88,12 +90,12 @@ exports[`<MovieCard/> is rendered correctly 1`] = `
           <span
             className="movie-card__genre"
           >
-            Horror
+            Drama
           </span>
           <span
             className="movie-card__year"
           >
-            2010
+            2015
           </span>
         </p>
         <div

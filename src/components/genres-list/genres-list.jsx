@@ -9,6 +9,10 @@ const GenresList = (props) => {
     onGenreChange
   } = props;
 
+  if (!items || !items.length) {
+    return null;
+  }
+
   const handleClick = (genre = null) => {
     onActivate(genre);
     onGenreChange(genre);

@@ -17,9 +17,35 @@ export const convertScoreToGrade = (score) => {
 export const MovieCardTabs = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
-  REVIEWS: `Reviews`
+  REVIEWS: `Reviews`,
 };
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
+};
+
+export const convertFilm = (film) => ({
+  name: film.name,
+  posterImage: film.poster_image,
+  previewImage: film.preview_image,
+  backgroundImage: film.background_image,
+  backgroundColor: film.background_color,
+  description: film.description,
+  rating: film.rating,
+  scoresCount: film.scores_count,
+  director: film.director,
+  starring: film.starring,
+  runTime: film.run_time,
+  genre: film.genre,
+  released: film.released,
+  id: film.id,
+  isFavorite: film.is_favorite,
+  videoLink: film.video_link,
+  previewVideoLink: film.preview_video_link,
+});
+
+export const convertMinsToHrsMins = (mins) => {
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return `${h}h ${m}m`;
 };

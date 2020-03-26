@@ -9,10 +9,10 @@ Enzyme.configure({
 
 it(`<VideoPlayer/> has 2 states: Play and Pause`, () => {
   const film = {
-    id: `018a1a1e-8755-4c4f-87fd-08df55da6771`,
-    title: `Alien`,
-    imageUrl: `img/alien.jpg`,
-    videoUrl: `https://movies.com/alien.ogv.360p.webm`
+    id: 1,
+    name: `Alien`,
+    previewImage: `img/alien.jpg`,
+    previewVideoLink: `https://movies.com/alien.ogv.360p.webm`
   };
 
   const componentWrapper = (isPlaying) => {

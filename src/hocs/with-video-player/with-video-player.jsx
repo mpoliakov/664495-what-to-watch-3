@@ -56,7 +56,7 @@ const withVideoPlayer = (Component) => {
 
   WithVideoPlayer.propTypes = {
     film: PropTypes.shape({
-      id: PropTypes.string.isRequired
+      id: PropTypes.number.isRequired
     }),
     activeItem: PropTypes.any,
     onActivate: PropTypes.func.isRequired,

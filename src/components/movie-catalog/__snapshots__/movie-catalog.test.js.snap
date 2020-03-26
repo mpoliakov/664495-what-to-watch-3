@@ -51,7 +51,6 @@ exports[`<MovieCatalog/> is rendered correctly 1`] = `
   >
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
@@ -67,7 +66,32 @@ exports[`<MovieCatalog/> is rendered correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/1"
+          onClick={[Function]}
+        >
+          The Grand Budapest Hotel
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+      >
+        <video
+          onLoadStart={[Function]}
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/2"
+          onClick={[Function]}
         >
           Fantastic Beasts: The Crimes of Grindelwald
         </a>
@@ -75,7 +99,6 @@ exports[`<MovieCatalog/> is rendered correctly 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
@@ -91,7 +114,8 @@ exports[`<MovieCatalog/> is rendered correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/3"
+          onClick={[Function]}
         >
           Bohemian Rhapsody
         </a>
@@ -99,7 +123,6 @@ exports[`<MovieCatalog/> is rendered correctly 1`] = `
     </article>
     <article
       className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
@@ -115,7 +138,8 @@ exports[`<MovieCatalog/> is rendered correctly 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="movie-page.html"
+          href="/films/4"
+          onClick={[Function]}
         >
           Macbeth
         </a>

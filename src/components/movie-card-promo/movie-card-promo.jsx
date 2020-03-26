@@ -2,24 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PageHeader from '../page-header/page-header.jsx';
 
-const MovieCard = (props) => {
+const MovieCardPromo = (props) => {
   const {film} = props;
+
+  if (!film) {
+    return null;
+  }
 
   return <section className="movie-card">
     <div className="movie-card__bg">
-      <img src={film.imageUrl} alt={film.title} />
+      <img src={film.backgroundImage} alt={film.name} />
     </div>
     <PageHeader mix={`movie-card__head`}/>
     <div className="movie-card__wrap">
       <div className="movie-card__info">
         <div className="movie-card__poster">
-          <img src={film.posterUrl} alt={film.title + ` poster`} width="218" height="327" />
+          <img src={film.posterImage} alt={film.name + ` poster`} width="218" height="327" />
         </div>
         <div className="movie-card__desc">
-          <h2 className="movie-card__title">{film.title}</h2>
+          <h2 className="movie-card__title">{film.name}</h2>
           <p className="movie-card__meta">
-            <span className="movie-card__genre">{film.meta.genre}</span>
-            <span className="movie-card__year">{film.meta.releaseYear}</span>
+            <span className="movie-card__genre">{film.genre}</span>
+            <span className="movie-card__year">{film.released}</span>
           </p>
           <div className="movie-card__buttons">
             <button className="btn btn--play movie-card__button" type="button">
@@ -41,16 +45,26 @@ const MovieCard = (props) => {
   </section>;
 };
 
-MovieCard.propTypes = {
+MovieCardPromo.propTypes = {
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string,
-    posterUrl: PropTypes.string,
-    meta: PropTypes.exact({
-      genre: PropTypes.string.isRequired,
-      releaseYear: PropTypes.number.isRequired
-    })
+    name: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    previewImage: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number,
+    scoresCount: PropTypes.number,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool,
+    videoLink: PropTypes.string.isRequired,
+    previewVideoLink: PropTypes.string.isRequired
   })
 };
 
-export default MovieCard;
+export default MovieCardPromo;
